@@ -83,7 +83,7 @@
 				//echo "<pre>";
 				//var_dump($_FILES['avatar']);
 				if ($_FILES['avatar']['error'] == 0) {
-					$avatarName = $_FILES['avatar']['name'];
+					$avatarName = uniqid().'-'.$_FILES['avatar']['name'];
 					$pathUpload = 'uploads/'.$avatarName;
 					move_uploaded_file($_FILES['avatar']['tmp_name'], $pathUpload);
 				}
