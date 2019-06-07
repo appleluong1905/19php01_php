@@ -10,6 +10,23 @@
 </head>
 <body>
 	<?php
+		$arrCity = array(
+				'quangnam' => 'Quang Nam',
+				'danang' => 'Da Nang',
+				'hue' => 'Hue',
+			);
+		$arrGenderEn = array(
+			'male' => 'Male',
+			'female' => 'Female',
+			'other' => 'Other',
+		);
+		$arrGenderVi = array(
+			'male' => 'Nam',
+			'female' => 'Nữ',
+			'other' => 'Khác',
+		);
+		//echo "<pre>";
+		//var_dump($arrCity);
 		$errName = '';
 		$errEmail = '';
 		$errPhone = '';
@@ -23,6 +40,9 @@
 		$city = '';
 		$gender = '';
 		$bithday = '';
+
+		// bien check loi
+		$checkRegister = true;
 		if (isset($_POST['register'])) {
 			$name    = $_POST['name'];
 			$email   = $_POST['email'];
@@ -32,21 +52,44 @@
 			$city    = $_POST['city'];
 			if ($name == '') {
 				$errName = 'Please input your name';
+				$checkRegister = false;
 			}
 			if ($email == '') {
 				$errEmail = 'Please input your email';
+				$checkRegister = false;
 			}
 			if ($phone == '') {
 				$errPhone = 'Please input your phone';
+				$checkRegister = false;
 			}
 			if ($gender == '') {
 				$errGender = 'Please choose your gender';
+				$checkRegister = false;
 			}
 			if ($city == '') {
 				$errCity = 'Please choose your city';
+				$checkRegister = false;
 			}
 			if ($bithday == '') {
 				$errBithday = 'Please choose your bithday';
+				$checkRegister = false;
+			}
+
+			// in ra
+			if ($checkRegister) {
+				echo "<p>English</p>";
+				echo "Name: $name <br> Email: $email <br> City:";
+				echo  $arrCity["$city"];
+				echo " <br> Birthday: $bithday <br>Gender:";
+				echo  $arrGenderEn["$gender"];
+				echo "<br> Phone: $phone";
+
+				echo "<p>Tiếng Việt</p>";
+				echo "Name: $name <br> Email: $email <br> City:";
+				echo  $arrCity["$city"];
+				echo " <br> Birthday: $bithday <br>Gender:";
+				echo  $arrGenderVi["$gender"];
+				echo "<br> Phone: $phone";
 			}
 		}
 	?>
