@@ -11,20 +11,20 @@
 <body>
 	<?php 
 		$errName = $errPass = '';
-		if (isset($_POST['register'])) {
-			if ($_POST['name'] == '') {
+		if (isset($_REQUEST['register'])) {
+			if ($_REQUEST['name'] == '') {
 				$errName = 'Please input your name';
 			} else {
 				$errName = '';
 			}
-			if ($_POST['password'] == '') {
+			if ($_REQUEST['password'] == '') {
 				$errPass = 'Please input your password';
 			} else {
 				$errPass = '';
 			}
-			echo $_POST['name'];
+			echo $_REQUEST['name'];
 			echo "<br>";
-			echo $_POST['password'];
+			echo $_REQUEST['password'];
 		}
 	?>
 	<h1>Register form</h1>
