@@ -16,7 +16,13 @@
 		$errBithday = '';
 		$errCity = '';
 		$errGender = '';
-
+		// Khoi tao gia tri ban dau
+		$name = '';
+		$email = '';
+		$phone = '';
+		$city = '';
+		$gender = '';
+		$bithday = '';
 		if (isset($_POST['register'])) {
 			$name    = $_POST['name'];
 			$email   = $_POST['email'];
@@ -47,33 +53,36 @@
 	<h1>Register</h1>
 	<form action="#" method="POST">
 		<p>Name
-			<input type="text" name="name">
+			<input type="text" name="name" value="<?php echo $name;?>">
 		</p>
 		<p class="error"><?php echo $errName;?></p>
 		<p>Email
-			<input type="text" name="email">
+			<input type="text" name="email" value="<?php echo $email;?>">
 		</p>
 		<p class="error"><?php echo $errEmail;?></p>
 		<p>Phone
-			<input type="text" name="phone">
+			<input type="text" name="phone" value="<?php echo $phone;?>">
 		</p>
 		<p class="error"><?php echo $errPhone;?></p>
 		<p>Gender
-			<input type="radio" name="gender" value="male">Male
-			<input type="radio" name="gender" value="female">Female
-			<input type="radio" name="gender" value="other">Other
+			<input type="radio" name="gender" value="male" 
+			<?php if($gender == 'male'){ echo "checked";}?>>Male
+			<input type="radio" name="gender" value="female"
+			<?php echo $gender == 'female'?"checked":'';?>>Female
+			<input type="radio" name="gender" value="other"
+			<?php echo $gender == 'other'?"checked":'';?>>Other
 		</p>
 		<p class="error"><?php echo $errGender;?></p>
 		<p>Bithday
-			<input type="date" name="bithday">
+			<input type="date" name="bithday" value="<?php echo $bithday;?>">
 		</p>
 		<p class="error"><?php echo $errBithday;?></p>
 		<p>City
 			<select name="city">
-				<option value="">Please choose city</option>
-				<option value="danang">Da Nang</option>
-				<option value="quangnam">Quang Name</option>
-				<option value="hue">Hue</option>
+				<option value="" <?php echo $city == ''?"selected":'';?>>Please choose city</option>
+				<option value="danang" <?php echo $city == 'danang'?"selected":'';?>>Da Nang</option>
+				<option value="quangnam" <?php echo $city == 'quangnam'?"selected":'';?>>Quang Nam</option>
+				<option value="hue" <?php echo $city == 'hue'?"selected":'';?>>Hue</option>
 			</select>
 		</p>
 		<p class="error"><?php echo $errCity;?></p>
