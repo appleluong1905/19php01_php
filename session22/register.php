@@ -6,6 +6,9 @@
 		.error {
 			color: red;
 		}
+		img {
+			width: 150px;
+		}
 	</style>
 </head>
 <body>
@@ -74,16 +77,23 @@
 				$errBithday = 'Please choose your bithday';
 				$checkRegister = false;
 			}
-
 			// in ra
 			if ($checkRegister) {
+				//upload avatar
+				//echo "<pre>";
+				//var_dump($_FILES['avatar']);
+				if ($_FILES['avatar']['error'] == 0) {
+					$avatarName = $_FILES['avatar']['name'];
+					$pathUpload = 'uploads/'.$avatarName;
+					move_uploaded_file($_FILES['avatar']['tmp_name'], $pathUpload);
+				}
 				echo "<p>English</p>";
 				echo "Name: $name <br> Email: $email <br> City:";
 				echo  $arrCity["$city"];
 				echo " <br> Birthday: $bithday <br>Gender:";
 				echo  $arrGenderEn["$gender"];
 				echo "<br> Phone: $phone";
-
+				echo "<img src='$pathUpload' alt='Avatar'>";
 				echo "<p>Tiếng Việt</p>";
 				echo "Name: $name <br> Email: $email <br> City:";
 				echo  $arrCity["$city"];
@@ -94,9 +104,12 @@
 		}
 	?>
 	<h1>Register</h1>
-	<form action="#" method="POST">
+	<form action="#" method="POST" enctype="multipart/form-data">
 		<p>Name
 			<input type="text" name="name" value="<?php echo $name;?>">
+		</p>
+		<p>Avatar
+			<input type="file" name="avatar">
 		</p>
 		<p class="error"><?php echo $errName;?></p>
 		<p>Email
