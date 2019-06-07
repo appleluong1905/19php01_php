@@ -2,6 +2,11 @@
 <html>
 <head>
 	<title>Register - Session 22</title>
+	<style type="text/css">
+		.error {
+			color: red;
+		}
+	</style>
 </head>
 <body>
 	<?php
@@ -19,6 +24,24 @@
 			$gender  = isset($_POST['gender'])?$_POST['gender']:'';
 			$bithday = $_POST['bithday'];
 			$city    = $_POST['city'];
+			if ($name == '') {
+				$errName = 'Please input your name';
+			}
+			if ($email == '') {
+				$errEmail = 'Please input your email';
+			}
+			if ($phone == '') {
+				$errPhone = 'Please input your phone';
+			}
+			if ($gender == '') {
+				$errGender = 'Please choose your gender';
+			}
+			if ($city == '') {
+				$errCity = 'Please choose your city';
+			}
+			if ($bithday == '') {
+				$errBithday = 'Please choose your bithday';
+			}
 		}
 	?>
 	<h1>Register</h1>
