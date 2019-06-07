@@ -13,7 +13,12 @@
 		$errGender = '';
 
 		if (isset($_POST['register'])) {
-			
+			$name    = $_POST['name'];
+			$email   = $_POST['email'];
+			$phone   = $_POST['phone'];
+			$gender  = isset($_POST['gender'])?$_POST['gender']:'';
+			$bithday = $_POST['bithday'];
+			$city    = $_POST['city'];
 		}
 	?>
 	<h1>Register</h1>
