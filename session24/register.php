@@ -14,6 +14,7 @@
       </ol>
     </section>
     <?php 
+    	include 'connect.php';
       $errClassName = $errClassEmail = '';
       $errTextName = $errTextEmail = '';
       $name = $emai = '';
@@ -23,6 +24,13 @@
         if ($name == '') {
           $errClassName = 'has-error';
           $errTextName = 'Please input your name';
+        }
+        if ($name != '' && $email != '') {
+        	$sql = "INSERT INTO users(name, email) VALUES ('$name', '$email')";
+        	if (mysqli_query($connect, $sql) === TRUE) {
+        		// chuyen trang trong PHP
+        		header("Location: list_user.php");
+        	}
         }
       }
     ?>
@@ -47,7 +55,7 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Email</label>
-                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                  <input type="text" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Phone</label>

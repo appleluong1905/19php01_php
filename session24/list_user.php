@@ -14,7 +14,52 @@
     </section>
     <!-- Main content -->
     <section class="content">
-	     This is list user page
+	    <?php
+	    	include 'connect.php';
+	    	$sql = "SELECT * FROM users";
+	    	$result = mysqli_query($connect, $sql);
+	    ?>
+	     <div class="row">
+        <div class="col-md-6">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">List users</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table class="table table-bordered">
+                <tr>
+                  <th style="width: 10px">#</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Action</th>
+                </tr>
+               <?php 
+               if ($result->num_rows > 0) {
+               	while($row = $result->fetch_assoc()) {
+               		$id = $row['id'];
+               ?>
+	                <tr>
+	                  <td><?php echo $row['id']?></td>
+	                  <td><?php echo $row['name']?></td>
+	                  <td>
+	                    <?php echo $row['email']?>
+	                  </td>
+	                  <td>Edit | <a href="delete_user.php?id=<?php echo $id?>">Delete</a></td>
+	                </tr>
+                <?php 
+                	}
+                } else {?>
+                <tr>
+                	<td colspan="4">Khong co user nao</td>
+                </tr>
+                <?php }?>
+              </table>
+            </div>
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
     </section>
     <!-- /.content -->
   </div>
