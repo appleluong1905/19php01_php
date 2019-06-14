@@ -133,7 +133,7 @@
         <li class="header">MAIN NAVIGATION</li>
         <li class="active treeview menu-open">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>User</span>
+            <i class="fa fa-users"></i> <span>User</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -141,6 +141,18 @@
           <ul class="treeview-menu">
             <li><a href="register.php"><i class="fa fa-circle-o"></i> Register</a></li>
             <li class="active"><a href="#"><i class="fa fa-circle-o"></i> List users</a></li>
+          </ul>
+        </li>
+        <li class="active treeview menu-open">
+          <a href="#">
+            <i class="fa fa-shopping-cart"></i> <span>Product</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="register.php"><i class="fa fa-circle-o"></i> Add product</a></li>
+            <li class="active"><a href="#"><i class="fa fa-circle-o"></i> List products</a></li>
           </ul>
         </li>
       </ul>
