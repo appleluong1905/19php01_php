@@ -47,7 +47,7 @@
 	                    <?php echo $row['email']?>
 	                  </td>
                     <td><img src="uploads/avatar/<?php echo $row['avatar']?>" alt="avatar" class="avatar_user"></td>
-	                  <td>Edit | <a href="delete_user.php?id=<?php echo $id?>">Delete</a></td>
+	                  <td><a href="edit_user.php?id=<?php echo $id?>">Edit</a> | <a href="delete_user.php?id=<?php echo $id?>">Delete</a></td>
 	                </tr>
                 <?php 
                 	}

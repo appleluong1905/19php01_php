@@ -142,7 +142,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="register.php"><i class="fa fa-circle-o"></i> Register</a></li>
-            <li class="active"><a href="#"><i class="fa fa-circle-o"></i> List users</a></li>
+            <li class="active"><a href="list_user.php"><i class="fa fa-circle-o"></i> List users</a></li>
           </ul>
         </li>
         <li class="active treeview menu-open">
