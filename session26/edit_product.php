@@ -26,7 +26,7 @@
     $result = mysqli_query($connect, $sql);
     $editProduct = $result->fetch_assoc();
     //
-    $errName = $errDes = $errPrice = '';
+    $errName = $errDes = $errPrice = $errImage = '';
     $name = $editProduct['name'];
     $price =$editProduct['price'];
     $description = $editProduct['description'];
@@ -50,6 +50,10 @@
       }
       if (checkExistNameProduct($name, $connect)) {
         $errName = 'Product name exist';
+        $checkAdd = false;
+      }
+      if ($_FILES['image']['error'] == 0 && $_FILES['image']['size'] > 102400) {
+        $errImage = 'Please select a photo less than 100kb';
         $checkAdd = false;
       }
       //
@@ -102,9 +106,10 @@
                   <input type="text" class="form-control" id="price" name="price" placeholder="Enter product price" value="<?php echo $price;?>">
                   <span class="help-block"><?php echo ($errPrice != '')?$errPrice:'';?></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group <?php echo ($errImage != '')?'has-error':'';?>">
                   <label for="image">Image</label>
                   <input type="file" name="image">
+                  <span class="help-block"><?php echo ($errImage != '')?$errImage:'';?></span>
                   <img src="uploads/products/<?php echo $image?>" alt ="image">
                 </div>
               </div>
