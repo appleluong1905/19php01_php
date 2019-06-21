@@ -1,4 +1,9 @@
 <?php include 'common/header.php';?>
+<style type="text/css">
+  img {
+    width: 150px;
+  }
+</style>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -15,15 +20,22 @@
     <?php 
     include 'connect.php';
     include 'function/common.php';
+    // lay thong tin product can edit ra
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM products WHERE id = $id";
+    $result = mysqli_query($connect, $sql);
+    $editProduct = $result->fetch_assoc();
+    //
     $errName = $errDes = $errPrice = '';
-    $name = $price = $description = '';
+    $name = $editProduct['name'];
+    $price =$editProduct['price'];
+    $description = $editProduct['description'];
+    $image = $editProduct['image'];
     $checkAdd = true;
-    if (isset($_POST['add_product'])) {
+    if (isset($_POST['edit_product'])) {
       $name = $_POST['name'];
       $description = $_POST['description'];
       $price = $_POST['price'];
-      $created = date('Y-m-d h:i:s');
-      $image = 'default.jpg';
       if ($name == '') {
         $errName = 'Please input product name';
         $checkAdd = false;
@@ -36,7 +48,6 @@
         $errPrice = 'Please input product price';
         $checkAdd = false;
       }
-
       if (checkExistNameProduct($name, $connect)) {
         $errName = 'Product name exist';
         $checkAdd = false;
@@ -45,11 +56,16 @@
       if ($checkAdd) {
         // check and upoad image
         if ($_FILES['image']['error'] == 0) {
+          $oldImage = $image;
           $image = uniqid().'_'.$_FILES['image']['name'];
           move_uploaded_file($_FILES['image']['tmp_name'], 'uploads/products/'.$image);
+          // Xoa anh cu neu chon anh moi (tru truong hop a cu la anh default)
+          if ($oldImage != 'default.jpg') {
+            unlink("uploads/products/".$oldImage);  
+          }
         }
         // end image upload
-        $sql = "INSERT INTO products(name, description, price, image, created) VALUES ('$name', '$description', $price, '$image', '$created')";
+        $sql = "UPDATE products SET name = '$name', description = '$description', price = '$price', image = '$image' WHERE id = $id";
         if (mysqli_query($connect, $sql) === TRUE) {
           header("Location: list_product.php");
         } else {
@@ -89,12 +105,13 @@
                 <div class="form-group">
                   <label for="image">Image</label>
                   <input type="file" name="image">
+                  <img src="uploads/products/<?php echo $image?>" alt ="image">
                 </div>
               </div>
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary" name="add_product">Submit</button>
+                <button type="submit" class="btn btn-primary" name="edit_product">Edit product</button>
               </div>
             </form>
           </div>
