@@ -22,8 +22,16 @@
 					include 'view/news/news.php';
 					break;
 				case 'products':
+					// goi model xu ly du lieu
+					$productList = $model->getProductPage();
 					// goi view products
 					include 'view/products/products.php';
+					break;
+				case 'product_detail':
+					// goi model xu ly du lieu
+					$productDetail = $model->getProductDetail();
+					// goi view products
+					include 'view/products/product_detail.php';
 					break;
 				case 'contact':
 					// goi view contact

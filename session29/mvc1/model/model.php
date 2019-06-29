@@ -17,5 +17,15 @@
 			return $a * $b;
 		}
 
+		public function getProductPage() {
+			$productList = 'List product here';
+			return $productList;
+		}
+
+		public function getProductDetail() {
+			$productDetail = 'Chi tiet san pham';
+			return $productDetail;
+		}
+
 	}
 ?>
