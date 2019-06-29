@@ -28,8 +28,10 @@
 					include 'view/products/products.php';
 					break;
 				case 'product_detail':
+					// lay id cua san pham chi tiet
+					$id = $_GET['id'];
 					// goi model xu ly du lieu
-					$productDetail = $model->getProductDetail();
+					$productDetail = $model->getProductDetail($id);
 					// goi view products
 					include 'view/products/product_detail.php';
 					break;

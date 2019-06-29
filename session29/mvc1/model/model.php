@@ -22,8 +22,8 @@
 			return $productList;
 		}
 
-		public function getProductDetail() {
-			$productDetail = 'Chi tiet san pham';
+		public function getProductDetail($id) {
+			$productDetail = 'Chi tiet san pham '.$id;
 			return $productDetail;
 		}
 
