@@ -34,5 +34,10 @@
 			return mysqli_query($this->connect(), $sql);
 		}
 
+		public function addProduct($name, $description, $price, $image, $created) {
+			$sql = "INSERT INTO products(name, description, price, image, created) VALUES ('$name', '$description', $price, '$image', '$created')";
+			return mysqli_query($this->connect(), $sql);
+		}
+
 	}
 ?>

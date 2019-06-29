@@ -1,4 +1,5 @@
 <h1>Products page here</h1>
+<a href="index.php?action=add_product">Add product</a>
 <table class="table table-bordered">
   <tr>
     <th style="width: 10px">#</th>

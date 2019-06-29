@@ -49,8 +49,23 @@
 						//header("Location: "index.php?action=products);
 						$functionCommon->redirectPage('index.php?action=products');
 					}
-					// goi view contact
-					include 'view/contact/contact.php';
+					break;
+				case 'add_product':
+					# code...
+					// check xem da submit add product chua?
+					if (isset($_POST['add_product_form'])) {
+						$name = $_POST['name'];
+						$description = $_POST['description'];
+						$price = $_POST['price'];
+						$image = 'default.jpg';
+						$created = date('Y-m-d h:i:s');
+						// save vao database
+						if ($model->addProduct($name, $description, $price, $image, $created) === TRUE) {
+							$functionCommon->redirectPage('index.php?action=products');
+						}
+					}
+					// goi view hien thi trang add product
+					include 'view/products/add_product.php';
 					break;
 				default:
 					# code...
