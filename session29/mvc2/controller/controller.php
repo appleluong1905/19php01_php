@@ -1,9 +1,11 @@
 <?php 
 	include 'model/model.php';
+	include 'libs/function.php';
 	class Controller {
 
 		public function handleRequest() {
 			$model = new Model();
+			$functionCommon = new FunctionCommon();
 			$action = isset($_GET['action'])?$_GET['action']:'home';
 			switch ($action) {
 				case 'home':
@@ -36,6 +38,17 @@
 					include 'view/products/product_detail.php';
 					break;
 				case 'contact':
+					// goi view contact
+					include 'view/contact/contact.php';
+					break;
+				case 'delete_product':
+				   // lay id cua san pham can xoa
+					$id = $_GET['id'];
+					// goi model thuc hien xoa san pham
+					if ($model->deleteProduct($id) === TRUE) {
+						//header("Location: "index.php?action=products);
+						$functionCommon->redirectPage('index.php?action=products');
+					}
 					// goi view contact
 					include 'view/contact/contact.php';
 					break;

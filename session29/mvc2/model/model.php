@@ -1,5 +1,6 @@
 <?php 
-	class Model {
+	include 'config/connectdb.php';
+	class Model extends ConnectDB {
 
 		public function getNews() {
 			$news = 'Test news abc';
@@ -18,13 +19,19 @@
 		}
 
 		public function getProductPage() {
-			$productList = 'List product here';
+			$sql = "SELECT * FROM products";
+			$productList = mysqli_query($this->connect(), $sql);
 			return $productList;
 		}
 
 		public function getProductDetail($id) {
 			$productDetail = 'Chi tiet san pham '.$id;
 			return $productDetail;
+		}
+
+		public function deleteProduct($id) {
+			$sql = "DELETE FROM products WHERE id = $id";
+			return mysqli_query($this->connect(), $sql);
 		}
 
 	}
