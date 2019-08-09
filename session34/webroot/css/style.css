@@ -9,6 +9,12 @@ nav ul li {
 	font-weight: bold;
 	text-transform: uppercase;
 }
+nav {
+	height: 30px;
+}
 a {
 	text-decoration: none;
+}
+.login_account {
+	width: 180px;
 }

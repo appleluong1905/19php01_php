@@ -1,3 +1,7 @@
+<?php 
+	session_start();
+	include 'controller/frontend_controller.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,12 +12,21 @@
 	<h1>Frontend website</h1>
 	<nav>
 		<ul>
-			<li><a href="">Home</a></li>
+			<li><a href="index.php?controller=home&action=home">Home</a></li>
 			<li><a href="">News</a></li>
 			<li><a href="">Products</a></li>
-			<li><a href="">Login</a></li>
-			<li><a href="">Register</a></li>
+			<?php if(isset($_SESSION['login'])){?>
+				<li class="login_account">Hi, <?php echo $_SESSION['login'];?><a href="index.php?controller=user&action=logout"> Logout</a></li>
+				<li><a href="admin.php?controller=user&action=list_user">Manage</a></li>
+			<?php }else {?>
+				<li><a href="index.php?controller=user&action=login">Login</a></li>
+				<li><a href="index.php?controller=user&action=register">Register</a></li>
+			<?php }?>
 		</ul>
 	</nav>
+	<?php 
+		$front = new FrontendController();
+		$front->handleRequest();
+	?>
 </body>
 </html>
