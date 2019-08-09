@@ -41,7 +41,10 @@
 							}
 							// save vao database
 							$model = new FrontendModel();
-							$model->register($role, $username, $password, $name, $email, $phone, $birthday, $avatar);
+							if ($model->register($role, $username, $password, $name, $email, $phone, $birthday, $avatar) === TRUE) {
+								$_SESSION['login'] = $username;
+								header("Location: index.php");
+							}
 
 						}
 						include 'view/users/register.php';
