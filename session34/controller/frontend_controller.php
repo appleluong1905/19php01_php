@@ -41,10 +41,16 @@
 							}
 							// save vao database
 							$model = new FrontendModel();
-							if ($model->register($role, $username, $password, $name, $email, $phone, $birthday, $avatar) === TRUE) {
-								// Dang nhap luon, sau khi dang ky thanh cong
-								$_SESSION['login'] = $username;
-								header("Location: index.php");
+							$errorExistUser = '';
+							$checkExistUser = $model->checkExistUser($username, $email);
+							if ($checkExistUser->num_rows == 0) {
+								if ($model->register($role, $username, $password, $name, $email, $phone, $birthday, $avatar) === TRUE) {
+									// Dang nhap luon, sau khi dang ky thanh cong
+									$_SESSION['login'] = $username;
+									header("Location: index.php");
+								}
+							} else {
+								$errorExistUser = 'Exist email or username';
 							}
 
 						}

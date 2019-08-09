@@ -1,4 +1,5 @@
 <h1>Register page</h1>
+<p class="error"><?php echo $errorExistUser?></p>
 <form action="index.php?controller=user&action=register" method="POST" enctype="multipart/form-data">
 	<p>Role
 		<select name="role">

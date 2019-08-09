@@ -15,6 +15,11 @@ class FrontendModel extends DatabaseConnect {
 
 	}
 
+	function checkExistUser($username, $email) {
+		$sql = "SELECT * FROM users WHERE username = '$username' OR email = '$email'";
+		return mysqli_query($this->connect(), $sql);
+	}
+
 }
 
 ?>
