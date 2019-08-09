@@ -42,6 +42,7 @@
 							// save vao database
 							$model = new FrontendModel();
 							if ($model->register($role, $username, $password, $name, $email, $phone, $birthday, $avatar) === TRUE) {
+								// Dang nhap luon, sau khi dang ky thanh cong
 								$_SESSION['login'] = $username;
 								header("Location: index.php");
 							}
