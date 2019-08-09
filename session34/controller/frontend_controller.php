@@ -43,6 +43,7 @@
 							$model = new FrontendModel();
 							$errorExistUser = '';
 							$checkExistUser = $model->checkExistUser($username, $email);
+							// check exist username or email
 							if ($checkExistUser->num_rows == 0) {
 								if ($model->register($role, $username, $password, $name, $email, $phone, $birthday, $avatar) === TRUE) {
 									// Dang nhap luon, sau khi dang ky thanh cong
