@@ -20,6 +20,18 @@ class FrontendModel extends DatabaseConnect {
 		return mysqli_query($this->connect(), $sql);
 	}
 
+	function getListProduct() {
+		$sql = "SELECT products.id,
+		 products.name,
+		 products.price,
+		 products.image,
+		 product_categories.name as product_category_name
+		 FROM products 
+		 INNER JOIN product_categories ON products.product_category_id = product_categories.id
+		 ";
+		return mysqli_query($this->connect(), $sql);
+	}
+
 }
 
 ?>

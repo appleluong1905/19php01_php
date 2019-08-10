@@ -85,7 +85,16 @@
 				}
 		}
 		function handleProduct($action) {
-
+			switch ($action) {
+				case 'list_product':
+					# code...
+					$model = new FrontendModel();
+					$listProduct = $model->getListProduct();
+					include 'view/products/list_product_frontend.php';
+				default:
+					# code...
+					break;
+			}
 		}
 	}
 ?>

@@ -21,3 +21,14 @@ a {
 .error {
 	color: red;
 }
+.list_product {
+	width: 90%;
+	margin: 0 auto;
+}
+.detail_product {
+	width: 46%;
+	float: left;
+}
+img {
+	width: 250px;
+}
