@@ -22,7 +22,47 @@
 		}
 
 		function handleProduct($action) {
-
+			switch ($action) {
+				case 'list_product':
+					# code...
+					include 'view/products/list_product.php';
+					break;
+				case 'add_product_category':
+					if (isset($_POST['add'])) {
+						$name = $_POST['name'];
+						$model = new BackendModel();
+					  if ($model->addProductCategory($name) === TRUE) {
+					  	header("Location: admin.php");
+					  }
+					}
+					include 'view/products/add_product_category.php';
+					# code...
+					break;
+				case 'add_product':
+				  $model = new BackendModel();
+					$categories = $model->getCategory();
+					if (isset($_POST['add'])) {
+						$name = $_POST['name'];
+						$price = $_POST['price'];
+						$description = $_POST['description'];
+						$product_category_id = $_POST['product_category_id'];
+						$image = "default.png";
+						if ($_FILES['image']['error'] == 0) {
+							$image = $_FILES['image']['name'];
+							$pathUpload = 'webroot/uploads/products/';
+						}
+					  if ($model->addProduct($name, $price, $description, $product_category_id, $image) === TRUE) {
+					  	move_uploaded_file($_FILES['image']['tmp_name'], $pathUpload.$image);
+					  	header("Location: admin.php?controller=product&action=list_product");
+					  }
+					}
+					include 'view/products/add_product.php';
+					# code...
+					break;
+				default:
+					# code...
+					break;
+			}
 		}
 		function handleUser($action) {
 			switch ($action) {
@@ -31,7 +71,7 @@
 					$model = new BackendModel();
 					$listUser = $model->getListUser();
 					include 'view/users/list_user.php';
-					break;
+				break;
 				
 				default:
 					# code...

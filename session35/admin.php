@@ -16,8 +16,8 @@
 		<ul>
 			<li><a href="admin.php?controller=dashboard&action=home">Dashboard</a></li>
 			<li><a href="">News</a></li>
-			<li><a href="">Products</a></li>
-		  <li><a href="">Users</a></li>
+			<li><a href="admin.php?controller=product&action=list_product">Products</a></li>
+		  <li><a href="admin.php?controller=user&action=list_user">Users</a></li>
 		</ul>
 	</nav>
 	<?php 
