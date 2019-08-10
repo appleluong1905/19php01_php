@@ -11,7 +11,7 @@
 <body>
 	<h1>Backend website</h1>
 	<p>Hi <?php echo $_SESSION['login']['username'];?>
-	<a href="admin.php?controller=user&action=logout">Logout</a></p>
+	<a href="index.php?controller=user&action=logout">Logout</a></p>
 	<nav>
 		<ul>
 			<li><a href="admin.php?controller=dashboard&action=home">Dashboard</a></li>
