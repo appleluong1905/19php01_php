@@ -23,10 +23,6 @@
 
 		function handleProduct($action) {
 			switch ($action) {
-				case 'list_product':
-					# code...
-					include 'view/products/list_product.php';
-					break;
 				case 'add_product_category':
 					if (isset($_POST['add'])) {
 						$name = $_POST['name'];
@@ -59,6 +55,11 @@
 					include 'view/products/add_product.php';
 					# code...
 					break;
+				case 'list_product':
+					# code...
+					$model = new BackendModel();
+					$listProduct = $model->getListProduct();
+					include 'view/products/list_product.php';
 				default:
 					# code...
 					break;
