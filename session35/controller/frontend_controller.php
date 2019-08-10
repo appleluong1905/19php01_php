@@ -91,6 +91,14 @@
 					$model = new FrontendModel();
 					$listProduct = $model->getListProduct();
 					include 'view/products/list_product_frontend.php';
+				case 'product_detail':
+						# code...
+					$id = $_GET['id'];
+					$model = new FrontendModel();
+					$productDetail = $model->getProductDetail($id);
+					$productDetail = $productDetail->fetch_assoc();
+					include 'view/products/product_detail_frontend.php';
+					break;	
 				default:
 					# code...
 					break;
