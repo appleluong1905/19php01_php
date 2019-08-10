@@ -14,6 +14,9 @@
 				case 'product':
 					$this->handleProduct($action);
 					break;
+				case 'comment':
+					$this->handleComment($action);
+					break;
 				default:
 					# code...
 					break;
@@ -99,6 +102,22 @@
 					$productDetail = $productDetail->fetch_assoc();
 					include 'view/products/product_detail_frontend.php';
 					break;	
+				default:
+					# code...
+					break;
+			}
+		}
+
+		function handleComment($action) {
+			switch ($action) {
+				case 'comment':
+					if (isset($_POST['comment'])) {
+						$content = $_POST['content'];
+						//save comment vao database
+						// goi model
+					}
+					break;
+				
 				default:
 					# code...
 					break;

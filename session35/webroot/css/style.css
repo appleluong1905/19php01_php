@@ -32,3 +32,10 @@ a {
 img {
 	width: 250px;
 }
+.detail_product_full {
+	width: 100%;
+	margin-top: 20px;
+}
+.comment {
+	width: 100%;
+}
